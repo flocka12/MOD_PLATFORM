@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://dhcpt1kt8cs0g"]
+[gd_scene load_steps=24 format=4 uid="uid://dhcpt1kt8cs0g"]
 
 [ext_resource type="PackedScene" uid="uid://8st4scqt06l8" path="res://components/player/player.tscn" id="2_7yl00"]
 [ext_resource type="PackedScene" uid="uid://jnrusvm3gric" path="res://spaces/background.tscn" id="2_tb5a2"]
@@ -24,6 +24,21 @@ radius = 146.53668
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_074og"]
 
+[sub_resource type="Animation" id="Animation_cegan"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4742, 451)]
+}
+
 [sub_resource type="Animation" id="Animation_074og"]
 resource_name = "left_right"
 length = 2.0
@@ -41,85 +56,10 @@ tracks/0/keys = {
 "values": [Vector2(4742, 451), Vector2(5242, 451)]
 }
 
-[sub_resource type="Animation" id="Animation_cegan"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4742, 451)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_82xsv"]
 _data = {
 &"RESET": SubResource("Animation_cegan"),
 &"left_right": SubResource("Animation_074og")
-}
-
-[sub_resource type="Animation" id="Animation_getpj"]
-resource_name = "rot_1"
-length = 3.0
-loop_mode = 2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(4742, -429), Vector2(5037.5, -436.33334), Vector2(5333, -443.6667), Vector2(5628.5, -451), Vector2(5924, -458.33334), Vector2(6219.5, -465.6667), Vector2(6515, -473)]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2, 2, 2, 2),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.72431165, -0.083333336, -0.12071861, 0, 0, 0.72431165, -0.083333336, 0, 0, 0, 3.1415927, -0.083333336, -0.4028802, 0, 0, 0, -0.083333336, 0.5235988, 0, 0),
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2)
-}
-
-[sub_resource type="Animation" id="Animation_ryguw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(4742, -429)]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_d13ii"]
-_data = {
-&"RESET": SubResource("Animation_ryguw"),
-&"rot_1": SubResource("Animation_getpj")
 }
 
 [node name="Main" type="Node2D"]
@@ -414,15 +354,6 @@ position = Vector2(5214, 55)
 
 [node name="Platform2" parent="." instance=ExtResource("4_gd51l")]
 position = Vector2(6054, 50)
-
-[node name="Platform 2" parent="." instance=ExtResource("18_074og")]
-position = Vector2(4742, -429)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Platform 2"]
-libraries = {
-&"": SubResource("AnimationLibrary_d13ii")
-}
-autoplay = "rot_1"
 
 [connection signal="body_entered" from="Coins/Mine" to="Coins/Mine" method="_on_body_entered"]
 [connection signal="body_entered" from="Coins/Mine2" to="Coins/Mine2" method="_on_body_entered"]
