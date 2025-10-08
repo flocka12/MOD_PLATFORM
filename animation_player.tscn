@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5bg4hqhr0ld7"]
+
+[ext_resource type="Texture2D" uid="uid://cnsfc4sy12ia" path="res://assets/tiles-a.png" id="1_b0kc5"]
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_b0kc5")
+region_enabled = true
+region_rect = Rect2(898.25, 126.75, 263.25, 130.5)
